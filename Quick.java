@@ -5,11 +5,12 @@ public class Quick {
   /*return the value that is the kth smallest value of the array.
   */
   public static int quickselect(int []data, int k){
-    int p = partition(data,0,data.length);
-    while (k!=p) {
-      p = partition(data,0,data.length);
+    int p = partition(data,0,data.length-1);
+    while (k-1!=p) {
+      System.out.println(p);
+      p = partition(data,0,data.length-1);
     }
-    return k;
+    return data[k-1];
   }
 
   public static int partition ( int [] data, int start, int end){
