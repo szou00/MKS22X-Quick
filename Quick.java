@@ -7,7 +7,6 @@ public class Quick {
   public static int quickselect(int []data, int k){
     int p = partition(data,0,data.length-1);
     while (k-1!=p) {
-      System.out.println(p);
       p = partition(data,0,data.length-1);
     }
     return data[k-1];
