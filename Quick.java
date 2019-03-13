@@ -20,17 +20,17 @@ public class Quick {
    /*Modify the array to be in increasing order.
    */
    public static void quicksort(int[] data) {
-     quickSort(data,0,data.length-1);
+     quicksort(data,0,data.length-1);
    }
 
-   public static void quickSort(int[] data, int lo, int hi) {
+   public static void quicksort(int[] data, int lo, int hi) {
      if (lo >= hi) {
        //base case
        //nothing happens
      }
      int pivot = partition(data,lo,hi);
-     quickSort(data,pivot+1,hi);
-     quickSort(data,lo,pivot-1);
+     quicksort(data,pivot+1,hi);
+     quicksort(data,lo,pivot-1);
    }
 
 
@@ -38,7 +38,9 @@ public class Quick {
  public static int partition ( int [] data, int start, int end){
    Random rand = new Random();
    int s = start;
-   int x = rand.nextInt(end+1-start) + start;
+   // System.out.println(end+1-start);
+   int x = (rand.nextInt(end) % (end-start));
+   // System.out.println(x);
    int target = data[x];
    data[x] = data[start];
    data[start] = target;
@@ -75,6 +77,7 @@ public class Quick {
    for (int i = 0; i < ary.length; i++) {
      System.out.println(quickselect(ary,i));
    }
+   // quicksort(ary);
  }
 
 
