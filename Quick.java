@@ -17,6 +17,14 @@ public class Quick {
    return data[p];
  }
 
+   /*Modify the array to be in increasing order.
+   */
+   public static void quicksort(int[] data) {
+     quickSort(int[] data, int lo, int hi);
+   }
+
+
+
  public static int partition ( int [] data, int start, int end){
    Random rand = new Random();
    int s = start;
