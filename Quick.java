@@ -20,7 +20,17 @@ public class Quick {
    /*Modify the array to be in increasing order.
    */
    public static void quicksort(int[] data) {
-     quickSort(int[] data, int lo, int hi);
+     quickSort(data,0,data.length-1);
+   }
+
+   public static void quickSort(int[] data, int lo, int hi) {
+     if (lo >= hi) {
+       //base case
+       //nothing happens
+     }
+     int pivot = partition(data,lo,hi);
+     quickSort(data,pivot+1,hi);
+     quickSort(data,lo,pivot-1);
    }
 
 
