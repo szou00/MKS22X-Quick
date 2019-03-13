@@ -6,15 +6,12 @@ public class Quick {
  */
  public static int quickselect(int []data, int k){
    int p = partition(data,0,data.length-1);
-   System.out.println(p);
    while (k!=p) {
      if (p < k) {
        p = partition(data,p+1,data.length-1);
-       System.out.println(p);
      }
      if (p > k) {
        p = partition(data,0,p-1);
-       System.out.println(p);
      }
    }
    return data[p];
@@ -57,10 +54,9 @@ public class Quick {
 
  public static void main(String args[]) {
    int[]ary = { 2, 10, 15, 23, 0,  5};
-   // for (int i = 0; i < ary.length; i++) {
-   //   System.out.println(quickselect(ary,i));
-   // }
-   System.out.println(quickselect(ary,4));
+   for (int i = 0; i < ary.length; i++) {
+     System.out.println(quickselect(ary,i));
+   }
  }
 
 
