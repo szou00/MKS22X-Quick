@@ -3,55 +3,6 @@ import java.util.Random;
 public class Quick {
 
   /*return the value that is the kth smallest value of the array.
-<<<<<<< HEAD
-  */
-  public static int quickselect(int []data, int k){
-    int p = partition(data,0,data.length-1);
-    while (k-1!=p) {
-      p = partition(data,0,data.length-1);
-    }
-    return data[k-1];
-  }
-
-  public static int partition ( int [] data, int start, int end){
-    Random rand = new Random();
-    int s = start;
-    int x = rand.nextInt(end+1-start) + start;
-    int target = data[x];
-    data[x] = data[start];
-    data[start] = target;
-
-    if (start!= end) {
-      start+=1;
-    }
-    while (start != end) {
-      if (data[start] >= target) {
-        int temp = data[end];
-        data[end] = data[start];
-        data[start] = temp;
-        end-=1;
-      }
-      else {
-        start+=1;
-      }
-    }
-    if (data[start] > target) {
-      data[s] = data[start-1];
-      data[start-1] = target;
-      start -= 1;
-    }
-    else {
-      data[s] = data[start];
-      data[start] = target;
-    }
-    return start;
-  }
-
-  public static void main(String[] args) {
-    int[] data = {17,61,67,47,93,12,20,4,44,68};
-    System.out.println(quickselect(data,4));
-  }
-=======
  */
  public static int quickselect(int []data, int k){
    int p = partition(data,0,data.length-1);
@@ -88,7 +39,25 @@ public class Quick {
    Random rand = new Random();
    int s = start;
    // System.out.println(end+1-start);
-   int x = (rand.nextInt(end) % (end-start));
+
+   //choosing the median of the lowest, highest, and middle elements
+   p = data[start];
+   if (data[start+end/2] >= data[start]) {
+     if (data[start+end/2] >= data[end]) {
+       p = data[end];
+     }
+     else {
+       p = data[start+end/2];
+     }
+   }
+   if (data[end] >= data[start]) {
+     if (data[end] >= data[start+end/2]) {
+       p = data[start];
+     }
+     else {
+       p = data[end];
+     }
+   }
    // System.out.println(x);
    int target = data[x];
    data[x] = data[start];
@@ -130,5 +99,4 @@ public class Quick {
  }
 
 
->>>>>>> ddf97497adf915dc9f7bd20eff73c39ee40a3a5b
 }
