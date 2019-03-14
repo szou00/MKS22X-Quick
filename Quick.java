@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 
 public class Quick {
 
@@ -36,28 +37,36 @@ public class Quick {
 
 
  public static int partition ( int [] data, int start, int end){
-   Random rand = new Random();
+   // Random rand = new Random();
    int s = start;
    // System.out.println(end+1-start);
 
    //choosing the median of the lowest, highest, and middle elements
-   p = data[start];
-   if (data[start+end/2] >= data[start]) {
-     if (data[start+end/2] >= data[end]) {
-       p = data[end];
+   int min;int max;int med;
+   min = start;
+   if (data[start+end/2] >= data[min]) {
+     med = start+end/2;
+   }
+   else {
+     min = start+end/2;
+     med = start;
+   }
+   if (data[end] >= data[min]) {
+     if (data[end] >= data[med]) {
+       max = end;
      }
      else {
-       p = data[start+end/2];
+       max = start+end/2;
+       med = end;
      }
    }
-   if (data[end] >= data[start]) {
-     if (data[end] >= data[start+end/2]) {
-       p = data[start];
-     }
-     else {
-       p = data[end];
-     }
+   else {
+     min = end;
+     med = start;
+     max = start+end/2;
    }
+
+   int x = med;
    // System.out.println(x);
    int target = data[x];
    data[x] = data[start];
@@ -92,10 +101,12 @@ public class Quick {
 
  public static void main(String args[]) {
    int[]ary = { 2, 10, 15, 23, 0,  5};
-   for (int i = 0; i < ary.length; i++) {
-     System.out.println(quickselect(ary,i));
-   }
+   // for (int i = 0; i < ary.length; i++) {
+   //   System.out.println(quickselect(ary,i));
+   // }
    // quicksort(ary);
+   partition(ary,0,5);
+   System.out.println(Array.toString(ary));
  }
 
 
