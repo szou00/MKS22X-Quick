@@ -105,8 +105,8 @@ public class Quick {
    //   System.out.println(quickselect(ary,i));
    // }
    // quicksort(ary);
-   partition(ary,0,5);
-   System.out.println(Array.toString(ary));
+   System.out.println(partition(ary,0,5));
+   System.out.println(Arrays.toString(ary));
  }
 
 
