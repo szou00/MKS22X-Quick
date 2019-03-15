@@ -37,7 +37,7 @@ public class Quick {
 
 
  public static int partition ( int [] data, int start, int end){
-   // Random rand = new Random();
+   //keeping track of the original start
    int s = start;
    // System.out.println(end+1-start);
 
@@ -65,38 +65,44 @@ public class Quick {
      med = start;
      max = start+end/2;
    }
-
+   // System.out.println(min + " " +  med + " " + max);
    int x = med;
-   // System.out.println(x);
+   //swapping target to the front
    int target = data[x];
    data[x] = data[start];
    data[start] = target;
 
+   //swapping in general
    if (start!= end) {
      start+=1;
    }
    while (start != end) {
+     System.out.println(end-start);
      if (data[start] > target) {
        int temp = data[end];
        data[end] = data[start];
        data[start] = temp;
        end-=1;
+       System.out.println("greater");
      }
-     if (data[start] == target) {
-       Random r = new Random();
-       int v = r.nextInt(2);
-       if (v == 0) {
-         int temp = data[end];
-         data[end] = data[start];
-         data[start] = temp;
-         end-=1;
-       }
-       else {
-         start+=1;
+     else {
+       if (data[start] == target) {
+         System.out.println("Same");
+         Random r = new Random();
+         int v = r.nextInt(2);
+         if (v == 0) {
+           int temp = data[end];
+           data[end] = data[start];
+           data[start] = temp;
+           end-=1;
+         }
+         else {
+           start+=1;
+         }
        }
      }
    }
-   
+
    if (data[start] > target) {
      data[s] = data[start-1];
      data[start-1] = target;
