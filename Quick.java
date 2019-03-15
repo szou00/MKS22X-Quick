@@ -76,29 +76,27 @@ public class Quick {
      start+=1;
    }
    while (start != end) {
-     if (data[start] >= target) {
-       if (data[start] == target) {
-         Random r = new Random();
-         int v = r.nextInt(2);
-         if (v == 0) {
-           int temp = data[end];
-           data[end] = data[start];
-           data[start] = temp;
-           end-=1;
-         }
-         else {
-           start+=1;
-         }
-       }
+     if (data[start] > target) {
        int temp = data[end];
        data[end] = data[start];
        data[start] = temp;
        end-=1;
      }
-     else {
-       start+=1;
+     if (data[start] == target) {
+       Random r = new Random();
+       int v = r.nextInt(2);
+       if (v == 0) {
+         int temp = data[end];
+         data[end] = data[start];
+         data[start] = temp;
+         end-=1;
+       }
+       else {
+         start+=1;
+       }
      }
    }
+   
    if (data[start] > target) {
      data[s] = data[start-1];
      data[start-1] = target;
