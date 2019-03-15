@@ -77,17 +77,15 @@ public class Quick {
      start+=1;
    }
    while (start != end) {
-     System.out.println(end-start);
+     // System.out.println(end-start);
      if (data[start] > target) {
        int temp = data[end];
        data[end] = data[start];
        data[start] = temp;
        end-=1;
-       System.out.println("greater");
      }
      else {
        if (data[start] == target) {
-         System.out.println("Same");
          Random r = new Random();
          int v = r.nextInt(2);
          if (v == 0) {
@@ -96,9 +94,9 @@ public class Quick {
            data[start] = temp;
            end-=1;
          }
-         else {
-           start+=1;
-         }
+       }
+       else {
+         start+=1;
        }
      }
    }
