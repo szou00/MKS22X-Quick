@@ -80,7 +80,12 @@ public class Quick {
      start+=1;
    }
    while (start != end) {
-     if (data[start] >= target) {
+     int equal = -1;
+     if (data[start] == target) {
+       Random r = new Random();
+       equal = r.nextInt(2);
+     }
+     if (data[start] > target || equal == 0) {
        int temp = data[end];
        data[end] = data[start];
        data[start] = temp;
