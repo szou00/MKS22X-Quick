@@ -7,12 +7,17 @@ public class Quick {
  */
  public static int quickselect(int []data, int k){
    int p = partition(data,0,data.length-1);
+   System.out.println("k: " + k + " p: " + p);
    while (k!=p) {
      if (p < k) {
        p = partition(data,p+1,data.length-1);
+       // System.out.println(p);
      }
-     if (p > k) {
-       p = partition(data,0,p-1);
+     else {
+       if (p > k) {
+         p = partition(data,0,p-1);
+         // System.out.println("Second loop: " + p);
+       }
      }
    }
    return data[p];
@@ -44,11 +49,11 @@ public class Quick {
    //choosing the median of the lowest, highest, and middle elements
    int min;int max;int med;
    min = start;
-   if (data[start+end/2] >= data[min]) {
-     med = start+end/2;
+   if (data[(start+end)/2] >= data[min]) {
+     med = (start+end)/2;
    }
    else {
-     min = start+end/2;
+     min = (start+end)/2;
      med = start;
    }
    if (data[end] >= data[min]) {
@@ -56,7 +61,7 @@ public class Quick {
        max = end;
      }
      else {
-       max = start+end/2;
+       max = (start+end)/2;
        med = end;
      }
    }
@@ -77,27 +82,14 @@ public class Quick {
      start+=1;
    }
    while (start != end) {
-     // System.out.println(end-start);
-     if (data[start] > target) {
+     if (data[start] >= target) {
        int temp = data[end];
        data[end] = data[start];
        data[start] = temp;
        end-=1;
      }
      else {
-       if (data[start] == target) {
-         Random r = new Random();
-         int v = r.nextInt(2);
-         if (v == 0) {
-           int temp = data[end];
-           data[end] = data[start];
-           data[start] = temp;
-           end-=1;
-         }
-       }
-       else {
-         start+=1;
-       }
+       start+=1;
      }
    }
 
@@ -119,9 +111,24 @@ public class Quick {
    // for (int i = 0; i < ary.length; i++) {
    //   System.out.println(quickselect(ary,i));
    // }
+   int p = partition(ary,0,ary.length-1);
+   System.out.println("p: " + p);
+   while (p!=4) {
+     if (p < 4) {
+         p = partition(ary,p+1,ary.length-1);
+         // System.out.println(p);
+       }
+       else {
+         if (p > 4) {
+           p = partition(ary,0,p-1);
+           // System.out.println("Second loop: " + p);
+         }
+       }
+       System.out.println(p);
+   }
    // quicksort(ary);
-   System.out.println(partition(ary,0,5));
-   System.out.println(Arrays.toString(ary));
+   // System.out.println(partition(ary,0,5));
+   // System.out.println(Arrays.toString(ary));
  }
 
 
