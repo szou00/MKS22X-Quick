@@ -47,8 +47,6 @@ public class Quick {
    //choosing the median of the lowest, highest, and middle elements
    int min;int max;int med;
    min = start;
-   System.out.println(start + " " + end);
-   System.out.println((start+end)/2);
    if (data[(start+end)/2] >= data[min]) {
      med = (start+end)/2;
    }
@@ -106,30 +104,40 @@ public class Quick {
  }
 
 
- public static void main(String args[]) {
-   int[]ary = { 2, 10, 15, 23, 0,  5};
-   // for (int i = 0; i < ary.length; i++) {
-   //   System.out.println(quicksort(i));
-   // }
-   // int p = partition(ary,0,ary.length-1);
-   // System.out.println("p: " + p);
-   // while (p!=4) {
-   //   if (p < 4) {
-   //       p = partition(ary,p+1,ary.length-1);
-   //       // System.out.println(p);
-   //     }
-   //     else {
-   //       if (p > 4) {
-   //         p = partition(ary,0,p-1);
-   //         // System.out.println("Second loop: " + p);
-   //       }
-   //     }
-   //     System.out.println(p);
-   // }
-   quicksort(ary);
-   // System.out.println(partition(ary,0,5));
-   System.out.println(Arrays.toString(ary));
- }
+ public static void main(String[]args){
+  System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
+  int[]MAX_LIST = {1000000000,500,10};
+  for(int MAX : MAX_LIST){
+    for(int size = 31250; size < 2000001; size*=2){
+      long qtime=0;
+      long btime=0;
+      //average of 5 sorts.
+      for(int trial = 0 ; trial <=5; trial++){
+        int []data1 = new int[size];
+        int []data2 = new int[size];
+        for(int i = 0; i < data1.length; i++){
+          data1[i] = (int)(Math.random()*MAX);
+          data2[i] = data1[i];
+        }
+        long t1,t2;
+        t1 = System.currentTimeMillis();
+        Quick.quicksort(data2);
+        t2 = System.currentTimeMillis();
+        qtime += t2 - t1;
+        t1 = System.currentTimeMillis();
+        Arrays.sort(data1);
+        t2 = System.currentTimeMillis();
+        btime+= t2 - t1;
+        if(!Arrays.equals(data1,data2)){
+          System.out.println("FAIL TO SORT!");
+          System.exit(0);
+        }
+      }
+      System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
+    }
+    System.out.println();
+  }
+}
 
 
 }
