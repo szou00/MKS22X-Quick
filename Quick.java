@@ -6,9 +6,8 @@ public class Quick {
   /*return the value that is the kth smallest value of the array.
  */
  public static int quickselect(int []data, int k){
-   int p = partition(data,0,data.length-1);
-   // System.out.println("k: " + k + " p: " + p);
-   while (k!=p) {
+   int p = partition(data,0,data.length-1); //partitions it once
+   while (k!=p) { 
      if (p < k) {
        p = partition(data,p+1,data.length-1);
        // System.out.println(p);
@@ -45,28 +44,15 @@ public class Quick {
    // System.out.println(end+1-start);
 
    //choosing the median of the lowest, highest, and middle elements
-   int min;int max;int med;
-   min = start;
-   if (data[(start+end)/2] >= data[min]) {
+   int med = 0;
+   if (data[(start+end)/2] <= data[start] && data[(start+end)/2] >= data[end] || data[(start+end)/2] >= data[start] && data[(start+end)/2] <= data[end]) {
      med = (start+end)/2;
    }
-   else {
-     min = (start+end)/2;
-     med = start;
+   if (data[end] >= data[start] && data[end] <= data[(start+end)/2] || data[end] <= data[start] && data[end] >= data[(start+end)/2]) {
+     med = end;
    }
-   if (data[end] >= data[min]) {
-     if (data[end] >= data[med]) {
-       max = end;
-     }
-     else {
-       max = (start+end)/2;
-       med = end;
-     }
-   }
-   else {
-     min = end;
+   if (data[start] <= data[(start+end)/2] && data[start] >= data[end] || data[start] <= data[(start+end)/2] || data[start] >= data[(start+end)/2]) {
      med = start;
-     max = start+end/2;
    }
    // System.out.println(min + " " +  med + " " + max);
    int x = med;
