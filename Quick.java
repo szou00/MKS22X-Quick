@@ -3,6 +3,23 @@ import java.util.Arrays;
 
 public class Quick {
 
+  public static void insertionsort(int[] data, int lo,int hi) {
+    if (lo >= hi) {
+      return; //base case
+    }
+    int current = 0;
+    for (int i = 0; i < data.length; i++) { //goes thru the list
+      current = data[i];
+      //compound boolean
+      int x = i - 1;
+      while (x > -1 && data[x] > current) { //finds the index that value should be
+        data[x + 1] = data[x];
+        data[x] = current;
+        x -= 1;
+      }
+    }
+  }
+
   /*return the value that is the kth smallest value of the array.
  */
  public static int quickselect(int []data, int k){
@@ -46,11 +63,11 @@ public class Quick {
      med = (start+end)/2;
    }
    //the end value is the median
-   if (data[end] >= data[start] && data[end] <= data[(start+end)/2] || data[end] <= data[start] && data[end] >= data[(start+end)/2]) {
+   else if (data[end] >= data[start] && data[end] <= data[(start+end)/2] || data[end] <= data[start] && data[end] >= data[(start+end)/2]) {
      med = end;
    }
    //the first value is the median
-   if (data[start] <= data[(start+end)/2] && data[start] >= data[end] || data[start] <= data[(start+end)/2] || data[start] >= data[(start+end)/2]) {
+   else {
      med = start;
    }
 
