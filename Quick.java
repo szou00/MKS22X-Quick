@@ -8,7 +8,7 @@ public class Quick {
       return; //base case
     }
     int current = 0;
-    for (int i = 0; i < data.length; i++) { //goes thru the list
+    for (int i = lo; i < hi+1; i++) { //goes thru the list
       current = data[i];
       //compound boolean
       int x = i - 1;
@@ -43,6 +43,10 @@ public class Quick {
 
    //helper method
    public static void quicksort(int[] data, int lo, int hi) {
+     if (hi - lo < 60) {
+       insertionsort(data,lo,hi);
+     }
+
      if (lo < hi) { //the only way something would happen
        int pivot = partition(data,lo,hi); //partitions it once
        quicksort(data,pivot+1,hi); //calls itself to partition the two different parts of the array
